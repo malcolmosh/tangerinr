@@ -3,7 +3,3 @@
 export(tan_agreg)
 export(tan_graphique)
 export(tangimport)
-import(ggplot2)
-import(lubridate)
-import(tidyverse)
-import(zoo)
