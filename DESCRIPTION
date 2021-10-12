@@ -1,0 +1,20 @@
+Package: tangerinr
+Title: Importation de données bancaires Tangerine (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Olivier",
+           family = "Simard-Hanley",
+           role = c("aut", "cre"),
+           email = "o.simardhanley@gmail.com",
+           comment = c(ORCID = "Merci!"))
+Description: Cette librairie de fonction permet d'analyser vos relevés de crédit générés en csv à partir du site web de la banque Tangerine. Le package vous permet d'importer en vrac plusieurs fichiers CSV en les fusionnant, de faire une agrégation des dépenses par mois et finalement de générer un graphique de vos dépenses mensuelles. 
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0
+Imports:
+	tidyverse,
+	ggplot2,
+	zoo,
+	lubridate
