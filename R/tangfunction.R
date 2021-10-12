@@ -10,13 +10,10 @@
 #' @param x Le nom que vous souhaitez donner au jeu de données créé
 #' @return Un tibble comprenant toutes les données CSV des différents fichiers entroposés dans le sous-dossier
 #' @export
-#' @import dplyr
-#' @import readr
-#' @import tibble
+#' @import tidyverse
 #' @import lubridate
 #' @import zoo
 #' @import ggplot2
-#' @import purrr
 #'
 tangimport <- function(x) {
   x= list.files(path="./tangerinecredit",pattern="/*.csv",full.names = T) %>%
