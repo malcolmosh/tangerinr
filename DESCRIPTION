@@ -18,4 +18,5 @@ Imports:
 	tibble,
 	ggplot2,
 	zoo,
-	lubridate
+	lubridate,
+	purrr

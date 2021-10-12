@@ -15,6 +15,7 @@
 #' @import lubridate
 #' @import zoo
 #' @import ggplot2
+#' @import purrr
 #'
 tangimport <- function(x) {
   x= list.files(path="./tangerinecredit",pattern="/*.csv",full.names = T) %>%
