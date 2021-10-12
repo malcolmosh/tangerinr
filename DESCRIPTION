@@ -15,9 +15,9 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Imports:
 	dplyr,
+	readr,
 	tibble,
-	ggplot2,
-	zoo,
 	lubridate,
-	purrr,
-	readr
+	zoo,
+	ggplot2,
+	purrr

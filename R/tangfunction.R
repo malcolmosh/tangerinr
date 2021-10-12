@@ -11,12 +11,12 @@
 #' @return Un tibble comprenant toutes les données CSV des différents fichiers entroposés dans le sous-dossier
 #' @export
 #' @import dplyr
+#' @import readr
 #' @import tibble
 #' @import lubridate
 #' @import zoo
 #' @import ggplot2
 #' @import purrr
-#' @import readr
 #'
 tangimport <- function(x) {
   x= list.files(path="./tangerinecredit",pattern="/*.csv",full.names = T) %>%
