@@ -1,7 +1,24 @@
+---
+title: "Readme"
+author: "Olivier Simard-Hanley"
+date: "12/10/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
 # tangerinr
 Librairie de base pour analyser des relevés de crédit exportés de tangerine
 
-```r
+```{r}
 # Installer et charger la librairie que nous venons de créer
 
 library(devtools)
@@ -30,3 +47,4 @@ tan_graphique(tout=FALSE,choixannee=2020)
 
 ```
 
+render()
