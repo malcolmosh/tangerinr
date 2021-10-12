@@ -19,4 +19,5 @@ Imports:
 	ggplot2,
 	zoo,
 	lubridate,
-	purrr
+	purrr,
+	readr
