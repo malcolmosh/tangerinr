@@ -10,6 +10,12 @@
 #' @param x Le nom que vous souhaitez donner au jeu de données créé
 #' @return Un tibble comprenant toutes les données CSV des différents fichiers entroposés dans le sous-dossier
 #' @export
+#' @import dplyr
+#' @import tibble
+#' @import lubridate
+#' @import zoo
+#' @import ggplot2
+#'
 tangimport <- function(x) {
   x= list.files(path="./tangerinecredit",pattern="/*.csv",full.names = T) %>%
     map_df(~read_csv(., col_types = cols(`Date de l'opération` = col_date(format = "%m/%d/%Y"),

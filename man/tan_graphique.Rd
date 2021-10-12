@@ -2,9 +2,7 @@
 % Please edit documentation in R/tangfunction.R
 \name{tan_graphique}
 \alias{tan_graphique}
-\title{Représentation graphique des dépenses mensuelles.
-Cette fonction permet d'afficher un graphique de vos dépenses mensuelles sur 12 mois, avec une couleur
-différente par année}
+\title{Représentation graphique des dépenses mensuelles.}
 \usage{
 tan_graphique(tout, choixannee)
 }
@@ -17,7 +15,6 @@ tan_graphique(tout, choixannee)
 Un graphique avec l'évolution mensuelle de vos dépenses sur 12 mois
 }
 \description{
-Représentation graphique des dépenses mensuelles.
 Cette fonction permet d'afficher un graphique de vos dépenses mensuelles sur 12 mois, avec une couleur
 différente par année
 }

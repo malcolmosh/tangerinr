@@ -2,8 +2,7 @@
 % Please edit documentation in R/tangfunction.R
 \name{tan_agreg}
 \alias{tan_agreg}
-\title{Agrégation des données
-Cette fonction permet d'afficher une agrégation de vos dépenses par mois et par année.}
+\title{Agrégation des données}
 \usage{
 tan_agreg(tout, mois)
 }
@@ -16,6 +15,5 @@ tan_agreg(tout, mois)
 Un tibble qui affiche l'agrégation souhaitée
 }
 \description{
-Agrégation des données
 Cette fonction permet d'afficher une agrégation de vos dépenses par mois et par année.
 }
