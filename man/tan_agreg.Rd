@@ -4,7 +4,7 @@
 \alias{tan_agreg}
 \title{Agrégation des données}
 \usage{
-tan_agreg(tout, mois)
+tan_agreg(data, tout = TRUE, mois)
 }
 \arguments{
 \item{tout}{Si vous souhaitez afficher toutes les dépenses, indiquez TRUE}
@@ -16,4 +16,7 @@ Un tibble qui affiche l'agrégation souhaitée
 }
 \description{
 Cette fonction permet d'afficher une agrégation de vos dépenses par mois et par année.
+}
+\details{
+#' @param data Votre jeu de donnée importé par tangimport
 }

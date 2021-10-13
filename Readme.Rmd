@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # tangerinr
-Librairie de base pour analyser des relevés de crédit exportés de tangerine. 
+Librairie d'analyse et de visualisation pour des relevés de crédit en format .CSV exportés de Tangerine. 
 
 ## Utiliser la librairie
 
@@ -27,11 +27,12 @@ library(tangerinr)
 2. Fonction tangimport
 
 Cette fonction vous permet d'importer les relevés en format csv situés dans votre espace de travail actuel et de les fusionner au sein d'un même objet. 
-  
+**ATTENTION : l'extension du fichier csv doit être en majuscules (".CSV")**
 
 ```{r}
 # ?tangimport #documentatioj
 setwd("/Users/osher/OneDrive/Hec MSc/3. Logiciels statistiques/Travail final") #remplacez par votre répertoire de travail
+getwd() #vérifiez votre répertoire de travail
 importation = tangimport(importation) #importer vos fichiers
 
 ```
@@ -40,26 +41,28 @@ importation = tangimport(importation) #importer vos fichiers
 
 Cette fonction permet d'afficher une agrégation de vos dépenses par mois et par année. Ses arguments : 
 
-  + **tout=TRUE**, si vous souhaitez afficher toutes les dépenses
-  + **mois=01**, si vous souhaitez afficher un mois de calendrier précis
+  + data, votre jeu de données importé par la fonction tangimport plus haut
+  + **tout=TRUE** (par défaut), si vous souhaitez afficher toutes les dépenses
+  + si **tout=FALSE**, alors indiquez **mois=01**, si vous souhaitez afficher un mois de calendrier précis (01-12)
 
 ```{r}
 # ?tan_agreg #documentation
 
 tan_agreg(tout=TRUE) #afficher toutes les dépenses 
-tan_agreg(tout=FALSE,mois=04) #n'afficher que les dépenses d'avril
+tan_agreg(importation, tout=FALSE,mois=04) #n'afficher que les dépenses d'avril
 ```
 
 4. Fonction tan_graphique
 
 Cette fonction permet d'afficher un graphique de vos dépenses mensuelles sur 12 mois, avec une couleur différente par année. Ses arguments: 
 
-  + **tout=TRUE**, si vous souhaitez afficher les dépenses de toute la période.
-  + **choixannee=2020**, si vous souhaitez sélectionner une année précise. Indiquez l'année en format numérique. 	
+  + data, votre jeu de données importé par la fonction tangimport plus haut
+  + **tout=TRUE** (par défaut), si vous souhaitez afficher les dépenses de toute la période.
+  + **annee=2020**, si vous souhaitez sélectionner une année précise. Indiquez l'année en format numérique. 	
 
 ```{r}
 #  ?tan_graphique #documentation
 
 tan_graphique(tout=TRUE)
-tan_graphique(tout=FALSE,choixannee=2020)
+tan_graphique(tout=FALSE,annee=2020)
 ```

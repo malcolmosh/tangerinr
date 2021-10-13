@@ -12,7 +12,7 @@
 #' @export
 #'
 tangimport <- function(x) {
-  x= list.files(path=".",pattern="/*.csv",full.names = T) %>%
+  x= list.files(path=".",pattern="/*.CSV",full.names = T) %>%
     map_df(~read_csv(., col_types = cols(`Date de l'opération` = col_date(format = "%m/%d/%Y"),
                                          Montant = col_number()), locale = locale(encoding = "latin1")))
 
@@ -23,17 +23,15 @@ tangimport <- function(x) {
 #'
 #' Cette fonction permet d'afficher une agrégation de vos dépenses par mois et par année.
 #'
+#'#' @param data Votre jeu de donnée importé par tangimport
 #' @param tout Si vous souhaitez afficher toutes les dépenses, indiquez TRUE
 #' @param mois Si vous souhaitez sélectionner un mois précis, faites-le ici à l'aide du numéro du mois (ex: 05)
 #' @return Un tibble qui affiche l'agrégation souhaitée
 #' @export
-tan_agreg<- function(tout,mois) {
-  x= list.files(path="./tangerinecredit",pattern="/*.csv",full.names = T) %>%
-    map_df(~read_csv(., col_types = cols(`Date de l'opération` = col_date(format = "%m/%d/%Y"),
-                                         Montant = col_number()), locale = locale(encoding = "latin1")))
+tan_agreg<- function(data, tout=TRUE,mois) {
 
-
-   x$moistr= month(x$`Date de l'opération`)
+  x=data
+  x$moistr= month(x$`Date de l'opération`)
    x$jourtr=day(x$`Date de l'opération`)
    x$anneetr=year(x$`Date de l'opération`)
 
@@ -52,34 +50,31 @@ tan_agreg<- function(tout,mois) {
    }
 }
 
-
 #' Représentation graphique des dépenses mensuelles.
 #'
 #' Cette fonction permet d'afficher un graphique de vos dépenses mensuelles sur 12 mois, avec une couleur
 #' différente par année
 
+#' @param data Votre jeu de donnée importé par tangimport
 #' @param tout Si vous souhaitez afficher les dépenses de toute la période, indiquez TRUE
-#' @param choixannee Si vous souhaitez sélectionner une année précise, indiquez là ici en format numérique (ex: 2020)
+#' @param annee Si vous souhaitez sélectionner une année précise, indiquez là ici en format numérique (ex: 2020)
 #' @return Un graphique avec l'évolution mensuelle de vos dépenses sur 12 mois
 #' @export
 #histogramme de dépenses par année
-tan_graphique<- function(tout,choixannee) {
-  x3= list.files(path="./tangerinecredit",pattern="/*.csv",full.names = T) %>%
-    map_df(~read_csv(., col_types = cols(`Date de l'opération` = col_date(format = "%m/%d/%Y"),
-                                         Montant = col_number()), locale = locale(encoding = "latin1")))
+tan_graphique<- function(data, tout=TRUE,annee) {
 
+  x=data
 
   if (tout==TRUE){
 
-
-    x4<- x3 %>%
-      mutate (moisanneetr = as.yearmon(x3$`Date de l'opération`)) %>%
+    x2<- x %>%
+      mutate (moisanneetr = as.yearmon(x$`Date de l'opération`)) %>%
       filter(Transaction  =="DÉBIT") %>%
       group_by(moisanneetr) %>%
       summarise(montant_tot=sum(-(Montant)))
 
 
-    ggplot(x4, aes(month(moisanneetr, label=TRUE, abbr=TRUE),
+    ggplot(x2, aes(month(moisanneetr, label=TRUE, abbr=TRUE),
                    montant_tot, group=factor(year(moisanneetr)), colour=factor(year(moisanneetr)))) +
       geom_line() +
       geom_point() +
@@ -87,14 +82,14 @@ tan_graphique<- function(tout,choixannee) {
       theme_classic()
   }
   else {
-    x5<- x3 %>%
-      mutate (moisanneetr = as.yearmon(x3$`Date de l'opération`)) %>%
+    x3<- x %>%
+      mutate (moisanneetr = as.yearmon(x$`Date de l'opération`)) %>%
       filter(Transaction  =="DÉBIT") %>%
-      filter(year(moisanneetr)==choixannee) %>%
+      filter(year(moisanneetr)==annee) %>%
       group_by(moisanneetr) %>%
       summarise(montant_tot=sum(-(Montant)))
 
-    ggplot(x5, aes(month(moisanneetr, label=TRUE, abbr=TRUE),
+    ggplot(x3, aes(month(moisanneetr, label=TRUE, abbr=TRUE),
                    montant_tot, group=factor(year(moisanneetr)), colour=factor(year(moisanneetr)))) +
       geom_line() +
       geom_point() +

@@ -4,12 +4,14 @@
 \alias{tan_graphique}
 \title{Représentation graphique des dépenses mensuelles.}
 \usage{
-tan_graphique(tout, choixannee)
+tan_graphique(data, tout = TRUE, annee)
 }
 \arguments{
+\item{data}{Votre jeu de donnée importé par tangimport}
+
 \item{tout}{Si vous souhaitez afficher les dépenses de toute la période, indiquez TRUE}
 
-\item{choixannee}{Si vous souhaitez sélectionner une année précise, indiquez là ici en format numérique (ex: 2020)}
+\item{annee}{Si vous souhaitez sélectionner une année précise, indiquez là ici en format numérique (ex: 2020)}
 }
 \value{
 Un graphique avec l'évolution mensuelle de vos dépenses sur 12 mois
