@@ -1,33 +1,35 @@
 ---
 title: "Readme"
-author: "Olivier Simard-Hanley"
-date: "12/10/2021"
-output: html_document
-editor_options: 
-  chunk_output_type: console
+author: Olivier Simard-Hanley
+date: "13 octobre 2021"
+output:
+  md_document:
+    variant: markdown_github
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # tangerinr
 Librairie d'analyse et de visualisation pour des relevés de crédit en format .CSV exportés de Tangerine. 
 
-## Utiliser la librairie
+### Comment utiliser la librairie
 
-1. Installer la librairie à partir de github puis la charger
+&nbsp;
 
-```{r}
+**1. Installer la librairie à partir de github puis la charger**
+
+```{r message=FALSE, warning=FALSE}
 library(devtools)
 install_github("malcolmosh/tangerinr")
 library(tangerinr)
 ```
 
-2. Fonction tangimport
+&nbsp;
 
-Cette fonction vous permet d'importer les relevés en format csv situés dans votre espace de travail actuel et de les fusionner au sein d'un même objet. 
-**ATTENTION : l'extension du fichier csv doit être en majuscules (".CSV")**
+
+**2. Fonction tangimport**: Cette fonction vous permet d'importer les relevés en format csv situés dans votre espace de travail actuel et de les fusionner au sein d'un même objet. **ATTENTION : l'extension du fichier csv doit être en majuscules (".CSV")**
 
 ```{r}
 # ?tangimport #documentatioj
@@ -37,9 +39,9 @@ importation = tangimport(importation) #importer vos fichiers
 
 ```
 
-3. Fonction tan_agreg
+&nbsp;
 
-Cette fonction permet d'afficher une agrégation de vos dépenses par mois et par année. Ses arguments : 
+**3. Fonction tan_agreg** : cette fonction permet d'afficher une agrégation de vos dépenses par mois et par année. Ses arguments : 
 
   + data, votre jeu de données importé par la fonction tangimport plus haut
   + **tout=TRUE** (par défaut), si vous souhaitez afficher toutes les dépenses
@@ -48,21 +50,21 @@ Cette fonction permet d'afficher une agrégation de vos dépenses par mois et pa
 ```{r}
 # ?tan_agreg #documentation
 
-tan_agreg(tout=TRUE) #afficher toutes les dépenses 
-tan_agreg(importation, tout=FALSE,mois=04) #n'afficher que les dépenses d'avril
+tan_agreg(importation) #afficher toutes les dépenses 
+tan_agreg(importation, tout=FALSE,mois=09) #n'afficher que les dépenses d'avril
 ```
 
-4. Fonction tan_graphique
+&nbsp;
 
-Cette fonction permet d'afficher un graphique de vos dépenses mensuelles sur 12 mois, avec une couleur différente par année. Ses arguments: 
+**4. Fonction tan_graphique** : cette fonction permet d'afficher un graphique de vos dépenses mensuelles sur 12 mois, avec une couleur différente par année. Ses arguments: 
 
   + data, votre jeu de données importé par la fonction tangimport plus haut
   + **tout=TRUE** (par défaut), si vous souhaitez afficher les dépenses de toute la période.
   + **annee=2020**, si vous souhaitez sélectionner une année précise. Indiquez l'année en format numérique. 	
 
-```{r}
+```{r, out.width = "50%"}
 #  ?tan_graphique #documentation
 
-tan_graphique(tout=TRUE)
-tan_graphique(tout=FALSE,annee=2020)
+tan_graphique(importation)
+tan_graphique(importation, tout=FALSE,annee=2021)
 ```
