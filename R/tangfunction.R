@@ -12,7 +12,7 @@
 #' @export
 #'
 tangimport <- function(x) {
-  x= list.files(path="./tangerinecredit",pattern="/*.csv",full.names = T) %>%
+  x= list.files(path=".",pattern="/*.csv",full.names = T) %>%
     map_df(~read_csv(., col_types = cols(`Date de l'opération` = col_date(format = "%m/%d/%Y"),
                                          Montant = col_number()), locale = locale(encoding = "latin1")))
 

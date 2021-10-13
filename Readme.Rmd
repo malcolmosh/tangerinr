@@ -3,48 +3,63 @@ title: "Readme"
 author: "Olivier Simard-Hanley"
 date: "12/10/2021"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
 # tangerinr
-Librairie de base pour analyser des relevés de crédit exportés de tangerine
+Librairie de base pour analyser des relevés de crédit exportés de tangerine. 
+
+## Utiliser la librairie
+
+1. Installer la librairie à partir de github puis la charger
 
 ```{r}
-# Installer et charger la librairie que nous venons de créer
-
 library(devtools)
 install_github("malcolmosh/tangerinr")
 library(tangerinr)
+```
 
+2. Fonction tangimport
 
-# Test de la documentation
-?tangimport
-?tan_agreg
-?tan_graphique
+Cette fonction vous permet d'importer les relevés en format csv situés dans votre espace de travail actuel et de les fusionner au sein d'un même objet. 
+  
 
-#' Test des fonctions
-#' Chargeons d'abord les librairies requises
-# Test de la fonction tangimport
-setwd("/Users/osher/OneDrive/Hec MSc/3. Logiciels statistiques/Travail final")
-importation = tangimport(importation)
-
-# Test de la fonction tan_agreg
-tan_agreg(tout=TRUE)
-tan_agreg(tout=FALSE,mois=04)
-
-# Test de la fonction tan_graphique
-tan_graphique(tout=TRUE)
-tan_graphique(tout=FALSE,choixannee=2020)
+```{r}
+# ?tangimport #documentatioj
+setwd("/Users/osher/OneDrive/Hec MSc/3. Logiciels statistiques/Travail final") #remplacez par votre répertoire de travail
+importation = tangimport(importation) #importer vos fichiers
 
 ```
 
-render()
+3. Fonction tan_agreg
+
+Cette fonction permet d'afficher une agrégation de vos dépenses par mois et par année. Ses arguments : 
+
+  + **tout=TRUE**, si vous souhaitez afficher toutes les dépenses
+  + **mois=01**, si vous souhaitez afficher un mois de calendrier précis
+
+```{r}
+# ?tan_agreg #documentation
+
+tan_agreg(tout=TRUE) #afficher toutes les dépenses 
+tan_agreg(tout=FALSE,mois=04) #n'afficher que les dépenses d'avril
+```
+
+4. Fonction tan_graphique
+
+Cette fonction permet d'afficher un graphique de vos dépenses mensuelles sur 12 mois, avec une couleur différente par année. Ses arguments: 
+
+  + **tout=TRUE**, si vous souhaitez afficher les dépenses de toute la période.
+  + **choixannee=2020**, si vous souhaitez sélectionner une année précise. Indiquez l'année en format numérique. 	
+
+```{r}
+#  ?tan_graphique #documentation
+
+tan_graphique(tout=TRUE)
+tan_graphique(tout=FALSE,choixannee=2020)
+```
